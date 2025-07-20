@@ -191,26 +191,29 @@
         </main>
 
         <footer class="text-center mt-16 pt-8 border-t border-slate-200">
-            <p class="text-medium-text">Phân tích này nhằm góp phần xây dựng một chính sách hiệu quả cho ngành lâm nghiệp Việt Nam.</p>
+            <p class="text-medium-text">Phân tích này nhằm góp phần xây dựng một chính sách hiệu quả, minh bạch và bền vững cho ngành lâm nghiệp Việt Nam.</p>
         </footer>
     </div>
 
     <script>
         function wrapLabel(str, maxWidth) {
-            if (str.length <= maxWidth) {
-                return str;
-            }
             const words = str.split(' ');
             let lines = [];
             let currentLine = '';
-            for (const word of words) {
-                if ((currentLine + ' ' + word).trim().length > maxWidth && currentLine.length > 0) {
+            for (let i = 0; i < words.length; i++) {
+                const word = words[i];
+                if (currentLine === '') {
+                    currentLine = word;
+                } else if ((currentLine + ' ' + word).trim().length <= maxWidth) {
+                    currentLine += ' ' + word;
+                } else {
                     lines.push(currentLine);
-                    currentLine = '';
+                    currentLine = word;
                 }
-                currentLine = (currentLine + ' ' + word).trim();
             }
-            lines.push(currentLine);
+            if (currentLine !== '') {
+                lines.push(currentLine);
+            }
             return lines;
         }
 
@@ -233,7 +236,7 @@
         new Chart(revenueChartCtx, {
             type: 'doughnut',
             data: {
-                labels: [wrapLabel('Chi trả trực tiếp cho Chủ rừng', 16), wrapLabel('Chi phí Quản lý của Quỹ BV&PTR', 16)],
+                labels: ['Chi trả Chủ rừng', 'Chi phí Quản lý Quỹ'], // Simplified labels
                 datasets: [{
                     label: 'Phân bổ Nguồn thu',
                     data: [79.5, 20.5],
