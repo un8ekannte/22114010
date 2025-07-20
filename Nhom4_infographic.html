@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infographic: Góp ý Hoàn thiện Nghị định về Dịch vụ Carbon Rừng</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .flowchart-node {
+            border: 2px solid;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            font-weight: 600;
+            min-width: 160px;
+            z-index: 10;
+            position: relative;
+        }
+        .flow-arrow-down {
+            width: 2px;
+            height: 40px;
+            background-color: #475569;
+            position: relative;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .flow-arrow-down::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: -4px;
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 8px solid #475569;
+        }
+        .flow-arrow-down-small {
+            width: 2px;
+            height: 20px;
+            background-color: #475569;
+            position: relative;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .flow-arrow-down-small::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: -4px;
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 8px solid #475569;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#00A1E4',
+			'red': '#8B0000',
+                        'secondary': '#00B8D4',
+                        'accent-1': '#00C6C4',
+                        'accent-2': '#00D0A6',
+                        'highlight': '#A2D870',
+                        'light-bg': '#F8FAFC',
+                        'dark-text': '#1E293B',
+                        'medium-text': '#475569',
+                        'light-text': '#94A3B8',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-light-bg text-dark-text">
+
+    <div class="container mx-auto p-4 sm:p-6 md:p-10">
+
+        <header class="text-center mb-12">
+            <div class="text-xl md:text-2xl font-bold text-primary mb-4">NHÓM 4</div>
+            <h1 class="text-3xl md:text-5xl font-extrabold text-dark-text mb-2">Góp ý hoàn thiện Nghị định Quy định về dịch vụ hấp thụ và lưu giữ các-bon của rừng</h1>
+            <p class="text-lg md:text-xl text-medium-text max-w-4xl mx-auto">Xây dựng khung pháp lý vững chắc, công bằng và hiệu quả nhằm thực hiện cam kết Net Zero 2050 của Việt Nam.</p>
+        </header>
+
+        <main class="space-y-10">
+            <section id="assessment">
+                <h2 class="text-2xl md:text-3xl font-bold text-center text-red mb-8">Đánh giá Tổng quan Dự thảo</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-highlight">
+                        <h3 class="text-xl font-bold mb-4 text-dark-text">✅ Điểm Mạnh Chính</h3>
+                        <ul class="space-y-3 text-medium-text">
+                            <li class="flex items-start"><span class="mr-3 mt-1">▶️</span><span><strong class="text-dark-text">Bố cục rõ ràng:</strong> Cấu trúc 4 Chương và Phụ lục chi tiết, dễ tra cứu và áp dụng.</span></li>
+                            <li class="flex items-start"><span class="mr-3 mt-1">▶️</span><span><strong class="text-dark-text">Phù hợp pháp luật:</strong> Tương thích với các luật hiện hành, đảm bảo tính kế thừa và đồng bộ.</span></li>
+                            <li class="flex items-start"><span class="mr-3 mt-1">▶️</span><span><strong class="text-dark-text">Nền tảng pháp lý:</strong> Cung cấp các định nghĩa và quy định cơ bản, tạo nền móng cho thị trường carbon rừng.</span></li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-red-500">
+                        <h3 class="text-xl font-bold mb-4 text-dark-text">⚠️ Hạn chế & Rủi ro</h3>
+                         <ul class="space-y-3 text-medium-text">
+                            <li class="flex items-start"><span class="mr-3 mt-1">▶️</span><span><strong class="text-dark-text">Quy định chung chung:</strong> Cần hướng dẫn chi tiết để đảm bảo tính khả thi và hiệu quả khi thực thi.</span></li>
+                            <li class="flex items-start"><span class="mr-3 mt-1">▶️</span><span><strong class="text-dark-text">Rủi ro về lợi ích:</strong> Phân phối lợi ích có nguy cơ chưa công bằng, đặc biệt với các chủ rừng nhỏ lẻ.</span></li>
+                            <li class="flex items-start"><span class="mr-3 mt-1">▶️</span><span><strong class="text-dark-text">Thiếu linh hoạt:</strong> Cơ chế định giá và quản lý có thể kìm hãm sự năng động của thị trường.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="recommendations-specific">
+                <h2 class="text-2xl md:text-3xl font-bold text-center text-red mb-10">Các Đề xuất Sửa đổi Trọng tâm</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                    <div class="bg-white rounded-xl shadow-lg p-6 md:col-span-1">
+                        <h3 class="text-xl font-bold mb-2">Quản lý Nguồn thu: Tối ưu hóa cho Chủ rừng</h3>
+                        <p class="text-medium-text mb-4">Dự thảo cho phép trích tới 20.5% tổng thu cho chi phí quản lý của Quỹ. Tỷ lệ này cần được giảm để tối đa hóa nguồn tiền chi trả trực tiếp cho người dân giữ rừng.</p>
+                        <div class="chart-container">
+                            <canvas id="revenueChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg p-6 md:col-span-1">
+                        <h3 class="text-xl font-bold mb-2">Cơ chế Định giá: Linh hoạt theo Thị trường</h3>
+                        <p class="text-medium-text mb-4">Một bảng giá cứng nhắc sẽ không phản ánh đúng giá trị carbon. Cần chuyển sang cơ chế định giá linh hoạt, trong đó nhà nước ban hành giá sàn và để thị trường quyết định giá cuối cùng.</p>
+                        <div class="chart-container">
+                            <canvas id="pricingChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg p-6 md:col-span-2">
+                        <h3 class="text-xl font-bold mb-2">Quy trình Giao dịch & Rủi ro Tính trùng lặp</h3>
+                        <p class="text-medium-text mb-6">Cần một quy trình minh bạch để xác định lượng carbon cho mục tiêu NDC quốc gia và lượng được phép giao dịch, tránh bán cùng một tín chỉ trên nhiều thị trường. Hệ thống đăng ký quốc gia là giải pháp cốt lõi để ngăn chặn rủi ro này.</p>
+
+                        <div class="flex flex-col items-center w-full py-4 relative">
+                            <!-- Node 1 -->
+                            <div class="flowchart-node border-primary text-primary bg-blue-50 mb-6">1. Dự án Carbon Rừng được Triển khai</div>
+
+                            <!-- Arrow 1 -->
+                            <div class="flow-arrow-down"></div>
+
+                            <!-- Node 2 -->
+                            <div class="flowchart-node border-secondary text-secondary bg-cyan-50 mb-6">2. Đo đạc, Báo cáo, Thẩm định (MRV) & Phát hành Tín chỉ</div>
+
+                            <!-- Arrow 2 leading to the split -->
+                            <div class="flow-arrow-down"></div>
+
+                            <!-- Branching Nodes Container -->
+                            <div class="flex flex-col md:flex-row justify-around w-full max-w-2xl mt-4">
+                                <!-- Left Branch (NDC) -->
+                                <div class="flex flex-col items-center w-full md:w-1/2 px-2">
+                                    <div class="flow-arrow-down-small"></div>
+                                    <div class="flowchart-node border-accent-2 text-accent-2 bg-emerald-50">3a. Đóng góp cho NDC Quốc gia</div>
+                                    <p class="text-sm mt-1 text-medium-text text-center">Lượng carbon giữ lại cho mục tiêu khí hậu quốc gia</p>
+                                </div>
+
+                                <!-- Right Branch (Market) -->
+                                <div class="flex flex-col items-center w-full md:w-1/2 px-2 mt-6 md:mt-0">
+                                    <div class="flow-arrow-down-small"></div>
+                                    <div class="flowchart-node border-highlight text-green-600 bg-green-50">3b. Giao dịch trên Thị trường Carbon</div>
+                                    <p class="text-sm mt-1 text-red-500 font-semibold text-center">⚠️ Rủi ro Tính trùng lặp nếu không có Hệ thống Đăng ký Quốc gia mạnh mẽ!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="recommendations-general">
+                <h2 class="text-2xl md:text-3xl font-bold text-center text-red mb-10">Các Kiến nghị Chung để Thực thi Hiệu quả</h2>
+                 <div class="bg-white rounded-xl shadow-lg p-6 md:col-span-2">
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-4">📜</span>
+                            <div>
+                                <h4 class="font-bold">Hoàn thiện Khung pháp lý</h4>
+                                <p class="text-medium-text">Ưu tiên ban hành các thông tư, hướng dẫn chi tiết về MRV, quy trình đăng ký dự án, cơ chế chia sẻ lợi ích và nghĩa vụ NDC.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-4">🎓</span>
+                            <div>
+                                <h4 class="font-bold">Nâng cao Năng lực</h4>
+                                <p class="text-medium-text">Xây dựng chương trình đào tạo toàn diện về kỹ thuật, pháp lý và quản trị cho cán bộ và cộng đồng, tận dụng hợp tác quốc tế.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-2xl mr-4">🤝</span>
+                            <div>
+                                <h4 class="font-bold">Đảm bảo Lợi ích Bền vững</h4>
+                                <p class="text-medium-text">Thiết lập hệ thống giám sát tác động kinh tế - xã hội, đảm bảo lợi ích tài chính thực sự đến với chủ rừng và cộng đồng.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center mt-12 pt-8 border-t border-slate-200">
+            <p class="text-medium-text">Bản phân tích này nhằm góp phần xây dựng một chính sách hiệu quả, minh bạch và bền vững cho ngành lâm nghiệp Việt Nam.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        function wrapLabel(str, maxWidth) {
+            if (str.length <= maxWidth) {
+                return str;
+            }
+            const words = str.split(' ');
+            let lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > maxWidth) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            lines.push(currentLine.trim());
+            return lines;
+        }
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            } else {
+                return label;
+            }
+        };
+
+        const chartColors = {
+            primary: '#00A1E4',
+            secondary: '#00B8D4',
+            accent1: '#00C6C4',
+            accent2: '#00D0A6',
+            highlight: '#A2D870',
+            lightText: '#94A3B8',
+        };
+
+        const revenueChartCtx = document.getElementById('revenueChart').getContext('2d');
+        const revenueChart = new Chart(revenueChartCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Chi trả trực tiếp cho Chủ rừng', 'Chi phí Quản lý của Quỹ BV&PTR'],
+                datasets: [{
+                    label: 'Phân bổ Nguồn thu',
+                    data: [79.5, 20.5],
+                    backgroundColor: [
+                        chartColors.primary,
+                        chartColors.lightText
+                    ],
+                    borderColor: '#FFFFFF',
+                    borderWidth: 4,
+                    hoverOffset: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '60%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                         labels: {
+                            font: {
+                                size: 14
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback,
+                             label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed !== null) {
+                                    label += context.parsed + '%';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const pricingChartCtx = document.getElementById('pricingChart').getContext('2d');
+        const pricingChart = new Chart(pricingChartCtx, {
+            type: 'line',
+            data: {
+                labels: ['2025', '2026', '2027', '2028', '2029', '2030'],
+                datasets: [{
+                    label: 'Giá Cố định (Đề xuất cũ)',
+                    data: [5, 5, 5, 5, 5, 5],
+                    borderColor: chartColors.lightText,
+                    backgroundColor: chartColors.lightText,
+                    borderWidth: 3,
+                    borderDash: [5, 5],
+                    tension: 0.1,
+                    fill: false
+                }, {
+                    label: 'Giá Thị trường (Đề xuất mới)',
+                    data: [5, 6.5, 6, 8, 7.5, 9.5],
+                    borderColor: chartColors.primary,
+                    backgroundColor: chartColors.primary,
+                    borderWidth: 4,
+                    tension: 0.3,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Giá ($/tấn CO2)',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    },
+                    x: {
+                         title: {
+                            display: true,
+                            text: 'Năm',
+                             font: {
+                                size: 14,
+                                weight: 'bold'
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            font: {
+                                size: 14
+                            }
+                        }
+                    },
+                    tooltip: {
+                         callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
